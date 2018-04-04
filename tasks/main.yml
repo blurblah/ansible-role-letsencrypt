@@ -1,0 +1,14 @@
+---
+- import_tasks: check_system.yml
+- import_tasks: check_variables.yml
+
+- name: Add certbot repository
+  apt_repository:
+    repo: ppa:certbot/certbot
+    filename: certbot
+
+- name: Install certbot
+  apt: name=certbot
+
+- name: Issue cert
+  shell: 'certbot certonly --standalone -d {{ domain }} -m {{ email }} --agree-tos --non-interactive'

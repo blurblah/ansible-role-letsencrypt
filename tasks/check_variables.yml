@@ -1,0 +1,10 @@
+---
+- name: Check domain variable
+  fail:
+    msg: Undefined variable domain
+  when: domain is undefined
+
+- name: Check email variable
+  fail:
+    msg: Undefined variable email
+  when: email is undefined
